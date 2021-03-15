@@ -10,14 +10,13 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+// require("./routes/apiRoutes.js")(app);
+require("./routes/htmlRoutes.js")(app);
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
-
-
-app.use(require("./routes/apiRoutes"));
-app.use(require("./routes/htmlRoutes"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
