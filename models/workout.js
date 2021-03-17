@@ -22,12 +22,16 @@ const workoutSchema = new Schema({
   },
   distance: {
     type: Number,
-    trim: true
+    trim: true,
   },
   duration: {
     type: Number,
     trim: true,
     required: "Please enter a workout duration.",
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 
