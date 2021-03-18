@@ -1,16 +1,18 @@
-const router = require("express").Router();
-const Workout = require("../models/workout.js");
+// const router = require("express").Router();
+const Workout = require("../models/Workout.js");
 
-router.get("/api/workouts", (req, res) => {
-  Workout.find({}).then((data) => {
-    res.json(data);
-  });
-});
-
-router.get("/api/workouts/range", (req, res) => {
-  Workout.find({ $limit: 7 })
-    .sort({ date: -1 })
-    .then((workout) => {
-      res.json(workout);
+module.exports = (app) => {
+  app.get("/api/workouts", (req, res) => {
+    Workout.find({}).then((data) => {
+      res.json(data);
     });
-});
+  });
+
+  app.get("/api/workouts/range", (req, res) => {
+    Workout.find({})
+      .sort({ date: -1 })
+      .then((workout) => {
+        res.json(workout);
+      });
+  });
+};
