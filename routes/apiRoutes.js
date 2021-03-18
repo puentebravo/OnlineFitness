@@ -32,4 +32,14 @@ module.exports = (app) => {
       res.json(workout);
     });
   });
+
+  app.put("/api/workouts/:id", (req, res) => {
+    const query = req.params.id;
+    const update = req.body;
+    Workout.findOneAndUpdate(query, update, [{ new: true }]).then(
+      (updateWorkout) => {
+        res.json(updateWorkout);
+      }
+    );
+  });
 };
