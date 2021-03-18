@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -10,10 +10,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
+require("./routes/apiRoutes.js")(app);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutTracker", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
