@@ -42,4 +42,14 @@ module.exports = (app) => {
       }
     );
   });
+
+  app.post("/api/workouts", (req, res) => {
+    Workout.create(req.body)
+      .then((newWorkout) => {
+        res.json(newWorkout);
+      })
+      .catch((err) => {
+        res.status(400).json(err);
+      });
+  });
 };
