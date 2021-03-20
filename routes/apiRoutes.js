@@ -43,8 +43,8 @@ module.exports = (app) => {
     );
   });
 
-  app.post("/api/workouts", (req, res) => {
-    Workout.create(req.body)
+  app.post("/api/workouts", ({ body }, res) => {
+    Workout.create(body)
       .then((newWorkout) => {
         res.json(newWorkout);
       })
